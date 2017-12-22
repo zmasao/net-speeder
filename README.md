@@ -12,13 +12,21 @@ A program to speed up single thread download upon long delay and unstable networ
 注2：net-speeder不依赖ttl的大小，ttl的大小跟流量无比例关系。不存在windows的ttl大，发包就多的情况。
 
 
-安装步骤：
+installtion：
 
     bash <(curl https://raw.githubusercontent.com/zmasao/net-speeder/master/net_speeder_lazyinstall.sh)
 
 
-使用方法(需要root权限启动）：
+start net_speeder
 
-    #参数：./net_speeder 网卡名 加速规则（bpf规则）
-    #ovz用法(加速所有ip协议数据)：
     ./net_speeder venet0 "ip"
+    or
+    nohup /usr/local/net_speeder/net_speeder venet0 "ip" >/dev/null 2>&1 &
+
+startup boot
+
+    echo "nohup /usr/local/net_speeder/net_speeder venet0 "ip" >/dev/null 2>&1 &" >> /etc/rc.local
+
+close net_speeder
+
+    killall net_speeder
